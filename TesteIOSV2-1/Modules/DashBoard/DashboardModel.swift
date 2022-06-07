@@ -8,7 +8,7 @@
 import Foundation
 
 struct Bills: Decodable {
-    var paymentDate : String
-    var electricityBill :String
-    var id: String
+    let paymentDate : String?
+    let electricityBill :String?
+    let id: String?
 }

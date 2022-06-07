@@ -13,59 +13,49 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var viewModel = DashboardViewModel()
     var service = DashboardService()
-    var data: [Bills?] = []
+    var dataBills: [Bills?] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         tvBankCell.register(UINib(nibName: "BankCellTableViewCell", bundle: nil), forCellReuseIdentifier: "BankCell")
         
         tvBankCell.reloadData()
-    
-    
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        DashboardService().loadData { result in
-            self.data = result
+        service.loadData { [weak self] result in
+            self!.dataBills = result
             
-            self.tvBankCell.reloadData()
+            self!.tvBankCell.reloadData()
         }
         
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        
-    }
-    
-    //----------------------------------
+    //-------------------------------------------------------------------------------------------------------------------------------
     // MARK: - TableView Delegate
-    //----------------------------------
-    
+    //-------------------------------------------------------------------------------------------------------------------------------
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return dataBills.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BankCell", for: indexPath) as! BankCellTableViewCell
         
-        cell.loadUI(debitName: "Eletricity Bill", debitValue: "\(data[indexPath.row]?.electricityBill ?? "")")
+        cell.loadUI(debitName: "Eletricity Bill", debitValue: "\(dataBills[indexPath.row]?.electricityBill ?? "")")
         
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110.0
+        return Constants.Dashboard.TableView.heigth
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60.0
+        return Constants.Dashboard.TableView.headerHeigth
     }
     
     //----------------------------------

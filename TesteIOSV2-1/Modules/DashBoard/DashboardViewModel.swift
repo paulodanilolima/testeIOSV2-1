@@ -7,12 +7,6 @@
 
 import UIKit
 
-
-
 class DashboardViewModel {
-    
-    var service = DashboardService()
-    
-    
     
 }

@@ -10,7 +10,6 @@ import UIKit
 
 class DashboardService {
   
-    
     func loadData(_ completion: @escaping (_ result: [Bills]) -> Void) {
         
         let url = URL(string: "https://60bd336db8ab3700175a03b3.mockapi.io/treinamento/payments")

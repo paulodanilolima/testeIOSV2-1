@@ -16,34 +16,20 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var lblLoginStats: UILabel!
     
-    var login: Login?
     var viewcontroller: UIViewController!
-    let upperCase = ["A","B","C","D","E","F","G","H","I","J","L","M","N","O","P","Q","R","S","T","U","V","X","Y","Z"]
-    let especialCharacters = [".",",","(",")","!","?","|", "@"]
-    let number = ["1","2","3","4","5","6","7","8","9", "0"]
+    var viewModel = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tfUserName.borderStyle = .none
-        tfPassword.borderStyle = .none
+        configStyle()
         
-        swPassword.layer.borderWidth = 1
-        swPassword.layer.borderColor = UIColor.gray.cgColor
-        
-        swUserName.layer.borderWidth = 1
-        swUserName.layer.borderColor = UIColor.gray.cgColor
-        
-        btnLogin.layer.cornerRadius = 8
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
+        addTapGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        LoginService().loadData { result in
-            self.login = result
+        LoginService().loadData { [weak self] result in
+            self!.viewModel.login = result
         }
     }
     
@@ -76,7 +62,7 @@ class LoginViewController: UIViewController {
         }else if tfPassword.text!.isEmpty {
             showLabelLoginStats(str: Constants.FillPassword)
         }else{
-            if verifyLoginAndPassword() {
+            if viewModel.verifyLoginAndPassword(Password: tfPassword.text ?? "") {
                 showLabelLoginStats(str: Constants.SucessLogin)
                 changeScreen()
             }else{
@@ -99,44 +85,39 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func verifyLoginAndPassword()-> Bool {
-        
-        let password = tfPassword.text!
-        var count = 0
-        
-        for char in password {
-            
-            if upperCase.contains(String(char)){
-                count += 1
-                break
-            }
-        }
-        
-        for char in password {
-            
-            if especialCharacters.contains(String(char)){
-                count += 1
-                break
-            }
-        }
-        
-        for char in password {
-            
-            if number.contains(String(char)){
-                count += 1
-                break
-            }
-        }
-        
-        if count >= 3 {
-            return true
-        }else{
-            return false
-        }
-    }
-    
     func changeScreen() {
         let viewcontroller = DashboardViewController()
         self.present(viewcontroller, animated: true)
+    }
+    
+    //----------------------------------------------------
+    // MARK: - configStyle()
+    //----------------------------------------------------
+    
+    func configStyle() {
+        //Removendo Borda dos Texts Fields
+        tfUserName.borderStyle = .none
+        tfPassword.borderStyle = .none
+        
+        //Criando a borda das views dos textsFields de PassWord
+        swPassword.layer.borderWidth = 1
+        swPassword.layer.borderColor = UIColor.gray.cgColor
+        
+        //Criando a borda das views dos textsFields de Login
+        swUserName.layer.borderWidth = 1
+        swUserName.layer.borderColor = UIColor.gray.cgColor
+        
+        //Definindo as curvas do botão de login
+        btnLogin.layer.cornerRadius = 8
+    }
+    
+    //----------------------------------------------------
+    // MARK: - addTapGesture()
+    //----------------------------------------------------
+    
+    func addTapGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
 }

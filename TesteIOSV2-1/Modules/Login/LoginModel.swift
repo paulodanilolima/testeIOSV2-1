@@ -9,10 +9,10 @@ import Foundation
 
 struct Login: Decodable {
     
-    var customerName: String?
-    var accountNumber: String?
-    var branchNumber: String?
-    var checkingAccountBalance: Int?
-    var id: String?
+    let customerName: String?
+    let accountNumber: String?
+    let branchNumber: String?
+    let checkingAccountBalance: Int?
+    let id: String?
     
 }

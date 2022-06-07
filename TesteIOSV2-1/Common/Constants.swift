@@ -17,4 +17,15 @@ struct Constants {
     static let PasswordNumber = "A senha não possui Caracteres Alfa alfanumérico"
     static let PasswordEspecials = "A senha não possui Caracteres Espaciais"
     static let PasswordUppercase = "A senha não possui Caracteres Maiusculos"
+    
+    struct Dashboard {
+        
+        
+        struct TableView {
+            static let heigth = 110.0
+            static let headerHeigth = 60.0
+        }
+        
+        
+    }
 }
