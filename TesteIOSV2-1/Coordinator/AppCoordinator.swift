@@ -5,4 +5,35 @@
 //  Created by Paulo Danilo Conceição Lima on 07/06/22.
 //
 
-import Foundation
+import UIKit
+
+final class AppCoordinator: Coordinator {
+    
+    
+    var currentViewController: UIViewController?
+    
+    let window: UIWindow
+    
+    init(_ window: UIWindow) {
+        self.window = window
+    }
+    
+    func start() {
+        let service = LoginService()
+        let viewModel = LoginViewModel(service)
+        let viewController = LoginViewController(viewModel: viewModel, coordinator: self)
+        
+        window.rootViewController = viewController
+        
+        window.makeKeyAndVisible()
+        
+        currentViewController = viewController
+    }
+    
+    func goToDashBoard(_ LoginModel: LoginModel){
+        
+        let viewcontroller = DashboardViewController()
+        currentViewController?.present(viewcontroller, animated: true)
+    }
+    
+}

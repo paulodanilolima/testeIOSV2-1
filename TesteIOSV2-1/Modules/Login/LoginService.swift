@@ -7,26 +7,22 @@
 
 import UIKit
 
-class LoginService {
-  
-    func loadData(_ completion: @escaping (_ result: Login) -> Void) {
+typealias LoginCompletion = (_ result: LoginModel) -> Void
+
+protocol LoginServiceDelegate {
+    func login(_ completion: @escaping LoginCompletion)
+}
+
+final class LoginService: BaseService, LoginServiceDelegate {
+    
+    func login(_ completion: @escaping LoginCompletion) {
         
-        let url = URL(string: "https://60bd336db8ab3700175a03b3.mockapi.io/treinamento/Login")
-        
-        let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-            if let data = data {
-                    if let character = try? JSONDecoder().decode(Login.self, from: data) {
+        request(endpoint: "/treinamento/Login",
+                responseType: LoginModel.self) { response in
             
-                        completion(character)
-                    } else {
-                        print("Invalid Response")
-                    }
-                } else if let error = error {
-                    print("HTTP Request Failed \(error)")
-                }
+            completion(response as! LoginModel)
+            
         }
-        
-        task.resume()
     }
   
     

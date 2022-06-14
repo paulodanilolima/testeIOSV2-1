@@ -18,6 +18,10 @@ struct Constants {
     static let PasswordEspecials = "A senha não possui Caracteres Espaciais"
     static let PasswordUppercase = "A senha não possui Caracteres Maiusculos"
     
+    struct API {
+        static let BaseURL = "https://60bd336db8ab3700175a03b3.mockapi.io"
+    }
+    
     struct Dashboard {
         
         

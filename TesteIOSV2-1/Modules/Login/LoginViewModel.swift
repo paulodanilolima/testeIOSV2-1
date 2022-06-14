@@ -6,13 +6,22 @@
 //
 
 import Foundation
+import UIKit
 
 class LoginViewModel {
+
+    var didLoggedIn: ((_ loginModel: LoginModel)->Void)?
+    
+    let service: LoginServiceDelegate
+    
+    init(_ service: LoginServiceDelegate) {
+        self.service = service
+    }
     
     let upperCase = ["A","B","C","D","E","F","G","H","I","J","L","M","N","O","P","Q","R","S","T","U","V","X","Y","Z"]
     let especialCharacters = [".",",","(",")","!","?","|", "@"]
     let number = ["1","2","3","4","5","6","7","8","9", "0"]
-    var login: Login?
+    var loginModel: LoginModel?
     
     
     func verifyLoginAndPassword(Password: String)-> Bool {
@@ -48,6 +57,50 @@ class LoginViewModel {
             return true
         }else{
             return false
+        }
+    }
+    
+    func login(){
+        service.login { [weak self] (result: LoginModel) in
+        
+            self?.loginModel = result
+            self?.didLoggedIn?(result)
+        }
+    }
+    
+    func login(tfUserName: UITextField, tfPassword: UITextField, label: UILabel) -> Bool{
+        
+        if tfUserName.text!.isEmpty && tfPassword.text!.isEmpty{
+            showLabelLoginStats(str: Constants.FillLoginAndPassword, label: label)
+            return false
+        } else if tfUserName.text!.isEmpty {
+            showLabelLoginStats(str: Constants.FillLogin, label: label)
+            return false
+        }else if tfPassword.text!.isEmpty {
+            showLabelLoginStats(str: Constants.FillPassword, label: label)
+            return false
+        }else{
+            if verifyLoginAndPassword(Password: tfPassword.text ?? "") {
+                showLabelLoginStats(str: Constants.SucessLogin, label: label)
+                return true
+            }else{
+                showLabelLoginStats(str: Constants.FailLogin, label: label)
+                return false
+            }
+        }
+    }
+    
+    func showLabelLoginStats(str: String, label: UILabel){
+        
+        label.text = str
+        label.isHidden = false
+        
+        hideLabelLoginStats(label)
+    }
+    
+    func hideLabelLoginStats(_ label: UILabel){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            label.isHidden = true
         }
     }
     

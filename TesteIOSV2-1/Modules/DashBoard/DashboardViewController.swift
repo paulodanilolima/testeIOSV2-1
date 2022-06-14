@@ -18,7 +18,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tvBankCell.register(UINib(nibName: "BankCellTableViewCell", bundle: nil), forCellReuseIdentifier: "BankCell")
+        tvBankCell.registerCell(reusable: BankCellTableViewCell.self)
         
         tvBankCell.reloadData()
 
@@ -42,7 +42,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BankCell", for: indexPath) as! BankCellTableViewCell
+        
+        let cell: BankCellTableViewCell = tableView.dequeueCell(at: indexPath)
         
         cell.loadUI(debitName: "Eletricity Bill", debitValue: "\(dataBills[indexPath.row]?.electricityBill ?? "")")
         

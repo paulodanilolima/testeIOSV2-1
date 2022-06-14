@@ -16,8 +16,18 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var lblLoginStats: UILabel!
     
-    var viewcontroller: UIViewController!
-    var viewModel = LoginViewModel()
+    let viewModel: LoginViewModel
+    let coordinator: AppCoordinator
+    
+    init(viewModel: LoginViewModel, coordinator: AppCoordinator) {
+        self.viewModel = viewModel
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +35,13 @@ class LoginViewController: UIViewController {
         configStyle()
         
         addTapGesture()
+        
+        bindingEvents()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        LoginService().loadData { [weak self] result in
-            self!.viewModel.login = result
+    func bindingEvents() {
+        viewModel.didLoggedIn = { [weak self] loginModel in
+            self?.changeScreen(loginModel)
         }
     }
     
@@ -46,7 +58,6 @@ class LoginViewController: UIViewController {
         return false
     }
 
-    
     @objc func dismissKeyboard(){
         view.endEditing(true)
     }
@@ -54,40 +65,13 @@ class LoginViewController: UIViewController {
     @IBAction func loginPressed(_ sender: UIButton) {
         
         dismissKeyboard()
-
-        if tfUserName.text!.isEmpty && tfPassword.text!.isEmpty{
-            showLabelLoginStats(str: Constants.FillLoginAndPassword)
-        } else if tfUserName.text!.isEmpty {
-            showLabelLoginStats(str: Constants.FillLogin)
-        }else if tfPassword.text!.isEmpty {
-            showLabelLoginStats(str: Constants.FillPassword)
-        }else{
-            if viewModel.verifyLoginAndPassword(Password: tfPassword.text ?? "") {
-                showLabelLoginStats(str: Constants.SucessLogin)
-                changeScreen()
-            }else{
-                showLabelLoginStats(str: Constants.FailLogin)
-            }
+        if viewModel.login(tfUserName: tfUserName, tfPassword: tfPassword, label: lblLoginStats) {
+            viewModel.login()
         }
     }
     
-    func showLabelLoginStats(str: String){
-        
-        lblLoginStats.text = str
-        lblLoginStats.isHidden = false
-        
-        hideLabelLoginStats()
-    }
-    
-    func hideLabelLoginStats(){
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self.lblLoginStats.isHidden = true
-        }
-    }
-    
-    func changeScreen() {
-        let viewcontroller = DashboardViewController()
-        self.present(viewcontroller, animated: true)
+    func changeScreen(_ loginModel: LoginModel) {
+        coordinator.goToDashBoard(loginModel)
     }
     
     //----------------------------------------------------

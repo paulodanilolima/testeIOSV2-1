@@ -8,26 +8,17 @@
 import UIKit
 
 
-class DashboardService {
+class DashboardService: BaseService {
+    
+    var dataBills: [Bills] = []
   
     func loadData(_ completion: @escaping (_ result: [Bills]) -> Void) {
         
-        let url = URL(string: "https://60bd336db8ab3700175a03b3.mockapi.io/treinamento/payments")
-        
-        let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-            if let data = data {
-                    if let character = try? JSONDecoder().decode([Bills].self, from: data) {
-            
-                        completion(character)
-                    } else {
-                        print("Invalid Response")
-                    }
-                } else if let error = error {
-                    print("HTTP Request Failed \(error)")
-                }
+        request(endpoint: "/treinamento/payments", responseType: [Bills].self) { [self] response in
+            self.dataBills = response as! [Bills]
+            completion(self.dataBills)
         }
         
-        task.resume()
     }
     
 }
