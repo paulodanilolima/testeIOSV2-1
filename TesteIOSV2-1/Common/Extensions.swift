@@ -19,8 +19,8 @@ class CustomHeader: UITableViewHeaderFooterView {}
 
 extension UITableView {
   
-    func registerCell(reusable: Reusable.Type) {
-       register(reusable, forCellReuseIdentifier: reusable.reuseID)
+    func registerCell<T:Reusable>(reusable: T.Type) {
+        register(reusable, forCellReuseIdentifier: reusable.reuseID)
     }
     
     func registerFooterHeader(reusable:  Reusable.Type) {
@@ -44,10 +44,9 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cells.forEach(tableView.registerCell)
+        tableView.registerCell(reusable: CustomCell.self)
         headerFooters.forEach(tableView.registerFooterHeader)
     }
-  // ...
 }
 
 extension UITableView {

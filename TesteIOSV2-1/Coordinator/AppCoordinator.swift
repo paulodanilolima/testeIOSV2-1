@@ -9,7 +9,6 @@ import UIKit
 
 final class AppCoordinator: Coordinator {
     
-    
     var currentViewController: UIViewController?
     
     let window: UIWindow
@@ -32,8 +31,10 @@ final class AppCoordinator: Coordinator {
     
     func goToDashBoard(_ LoginModel: LoginModel){
         
-        let viewcontroller = DashboardViewController()
-        currentViewController?.present(viewcontroller, animated: true)
+        let service = DashboardService()
+        let viewModel = DashboardViewModel(service)
+        let viewController = DashboardViewController(viewModel: viewModel, coordinator: self)
+        
+        currentViewController?.present(viewController, animated: true)
     }
-    
 }

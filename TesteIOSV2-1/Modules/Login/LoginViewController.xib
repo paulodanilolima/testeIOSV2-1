@@ -53,8 +53,12 @@
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="30511-100" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHM-Rl-skZ">
                                     <rect key="frame" x="15" y="0.0" width="359" height="55"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="txtFieldLogin"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="7yN-Vc-XRD"/>
+                                    </connections>
                                 </textField>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -70,8 +74,12 @@
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0E-7O-MGd">
                                     <rect key="frame" x="15" y="0.0" width="359" height="55"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="txtFieldPassword"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="TJP-IJ-Yjg"/>
+                                    </connections>
                                 </textField>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -90,6 +98,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKt-Tk-and">
                     <rect key="frame" x="57" y="712" width="300" height="50"/>
                     <color key="backgroundColor" red="0.26569470760000002" green="0.31656140090000001" blue="0.93971782920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <accessibility key="accessibilityConfiguration" identifier="LoginButton"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="P4U-AC-jjG"/>
                         <constraint firstAttribute="width" constant="300" id="yo3-MV-bL4"/>

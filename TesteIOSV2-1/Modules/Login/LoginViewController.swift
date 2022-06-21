@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var tfUserName: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
@@ -32,6 +32,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tfPassword.delegate = self
+        self.tfUserName.delegate = self
+        
         configStyle()
         
         addTapGesture()
@@ -55,7 +58,7 @@ class LoginViewController: UIViewController {
             loginPressed(btnLogin)
             return  false
         }
-        return false
+        return true
     }
 
     @objc func dismissKeyboard(){

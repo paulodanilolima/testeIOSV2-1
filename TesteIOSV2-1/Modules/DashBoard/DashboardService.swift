@@ -7,18 +7,23 @@
 
 import UIKit
 
+typealias DashboardCompletion = (_ result: Result<[Bills],NetworkError>) -> Void
 
-class DashboardService: BaseService {
+protocol DashboardServiceDelegate {
+    func loadData(_ completion: @escaping DashboardCompletion)
+}
+
+class DashboardService: BaseService, DashboardServiceDelegate {
     
     var dataBills: [Bills] = []
   
-    func loadData(_ completion: @escaping (_ result: [Bills]) -> Void) {
+    func loadData(_ completion: @escaping DashboardCompletion){
         
-        request(endpoint: "/treinamento/payments", responseType: [Bills].self) { [self] response in
-            self.dataBills = response as! [Bills]
-            completion(self.dataBills)
-        }
-        
+//        request(endpoint: "/treinamento/payments", responseType: [Bills].self) { [self] response in
+//            self.dataBills = response as! [Bills]
+//            completion(self.dataBills)
+//        }
+//        
     }
     
 }

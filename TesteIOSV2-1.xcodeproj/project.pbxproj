@@ -17,11 +17,14 @@
 		B227CE8C282DFD2E0087A8F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B227CE8A282DFD2E0087A8F4 /* LaunchScreen.storyboard */; };
 		B227CE97282DFD2E0087A8F4 /* TesteIOSV2_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B227CE96282DFD2E0087A8F4 /* TesteIOSV2_1Tests.swift */; };
 		B227CEA1282DFD2E0087A8F4 /* TesteIOSV2_1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B227CEA0282DFD2E0087A8F4 /* TesteIOSV2_1UITests.swift */; };
-		B227CEA3282DFD2E0087A8F4 /* TesteIOSV2_1UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B227CEA2282DFD2E0087A8F4 /* TesteIOSV2_1UITestsLaunchTests.swift */; };
 		B227CEB8282DFF0E0087A8F4 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B227CEB6282DFF0E0087A8F4 /* DashboardViewController.swift */; };
 		B227CEB9282DFF0E0087A8F4 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B227CEB7282DFF0E0087A8F4 /* DashboardViewController.xib */; };
 		B23B4F582838771E00071E89 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B4F562838771E00071E89 /* LoginViewController.swift */; };
 		B23B4F592838771E00071E89 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B23B4F572838771E00071E89 /* LoginViewController.xib */; };
+		B25B4B912861276F00E3F7AF /* loginUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25B4B902861276F00E3F7AF /* loginUnitTests.swift */; };
+		B25B4B932861278600E3F7AF /* dashbioardUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25B4B922861278600E3F7AF /* dashbioardUnitTests.swift */; };
+		B25B4B9828616E3F00E3F7AF /* loginUiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25B4B9628616E3F00E3F7AF /* loginUiTests.swift */; };
+		B25B4B9928616E3F00E3F7AF /* dashbioardUiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25B4B9728616E3F00E3F7AF /* dashbioardUiTests.swift */; };
 		B26F0AF428555EAA00418B87 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26F0AF328555EAA00418B87 /* BaseService.swift */; };
 		B2A6159C283AD2D8001DBB26 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A61599283AD2D8001DBB26 /* LoginViewModel.swift */; };
 		B2A6159D283AD2D8001DBB26 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A6159A283AD2D8001DBB26 /* LoginService.swift */; };
@@ -67,11 +70,14 @@
 		B227CE96282DFD2E0087A8F4 /* TesteIOSV2_1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteIOSV2_1Tests.swift; sourceTree = "<group>"; };
 		B227CE9C282DFD2E0087A8F4 /* TesteIOSV2-1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TesteIOSV2-1UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B227CEA0282DFD2E0087A8F4 /* TesteIOSV2_1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteIOSV2_1UITests.swift; sourceTree = "<group>"; };
-		B227CEA2282DFD2E0087A8F4 /* TesteIOSV2_1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteIOSV2_1UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B227CEB6282DFF0E0087A8F4 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		B227CEB7282DFF0E0087A8F4 /* DashboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
 		B23B4F562838771E00071E89 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B23B4F572838771E00071E89 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		B25B4B902861276F00E3F7AF /* loginUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginUnitTests.swift; sourceTree = "<group>"; };
+		B25B4B922861278600E3F7AF /* dashbioardUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashbioardUnitTests.swift; sourceTree = "<group>"; };
+		B25B4B9628616E3F00E3F7AF /* loginUiTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginUiTests.swift; sourceTree = "<group>"; };
+		B25B4B9728616E3F00E3F7AF /* dashbioardUiTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dashbioardUiTests.swift; sourceTree = "<group>"; };
 		B26F0AF328555EAA00418B87 /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		B2A61599283AD2D8001DBB26 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B2A6159A283AD2D8001DBB26 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
@@ -162,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				B227CE96282DFD2E0087A8F4 /* TesteIOSV2_1Tests.swift */,
+				B25B4B8F2861275500E3F7AF /* Modules */,
 			);
 			path = "TesteIOSV2-1Tests";
 			sourceTree = "<group>";
@@ -170,7 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				B227CEA0282DFD2E0087A8F4 /* TesteIOSV2_1UITests.swift */,
-				B227CEA2282DFD2E0087A8F4 /* TesteIOSV2_1UITestsLaunchTests.swift */,
+				B25B4B9428616DA100E3F7AF /* Modules */,
 			);
 			path = "TesteIOSV2-1UITests";
 			sourceTree = "<group>";
@@ -206,6 +213,24 @@
 				B2A615A2283AD853001DBB26 /* DashboardService.swift */,
 			);
 			path = DashBoard;
+			sourceTree = "<group>";
+		};
+		B25B4B8F2861275500E3F7AF /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				B25B4B902861276F00E3F7AF /* loginUnitTests.swift */,
+				B25B4B922861278600E3F7AF /* dashbioardUnitTests.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		B25B4B9428616DA100E3F7AF /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				B25B4B9628616E3F00E3F7AF /* loginUiTests.swift */,
+				B25B4B9728616E3F00E3F7AF /* dashbioardUiTests.swift */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		B26F0AF228555E6A00418B87 /* Base */ = {
@@ -401,6 +426,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B227CE97282DFD2E0087A8F4 /* TesteIOSV2_1Tests.swift in Sources */,
+				B25B4B912861276F00E3F7AF /* loginUnitTests.swift in Sources */,
+				B25B4B932861278600E3F7AF /* dashbioardUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,8 +435,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B227CEA3282DFD2E0087A8F4 /* TesteIOSV2_1UITestsLaunchTests.swift in Sources */,
 				B227CEA1282DFD2E0087A8F4 /* TesteIOSV2_1UITests.swift in Sources */,
+				B25B4B9828616E3F00E3F7AF /* loginUiTests.swift in Sources */,
+				B25B4B9928616E3F00E3F7AF /* dashbioardUiTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

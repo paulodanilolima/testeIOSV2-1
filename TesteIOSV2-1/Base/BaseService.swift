@@ -7,25 +7,37 @@
 
 import UIKit
 
+enum NetworkError: Error {
+    
+    case serviceError( error: Error )
+    case noData
+    case badUrl
+    case decoderError
+}
+
 class BaseService {
     
     func  request<T:Decodable>(endpoint : String,
-                              responseType: T.Type,
-                              _ completion: @escaping (_ response: Any?) -> Void) {
+                               _ completion: @escaping (_ response: Result<T,NetworkError>) -> Void) {
         
-        let url = URL(string: Constants.API.BaseURL + endpoint)
+        guard let url = URL(string: Constants.API.BaseURL + endpoint) else {
+            completion(.failure(.badUrl))
+            return }
         
-        let task = URLSession.shared.dataTask(with: url!) { data, response, error in
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(.failure(.serviceError(error: error)))
+            }
             if let data = data {
-                    if let character = try? JSONDecoder().decode(responseType.self, from: data) {
-            
-                        completion(character)
-                    } else {
-                        print("Invalid Response")
-                    }
-                } else if let error = error {
-                    print("HTTP Request Failed \(error)")
+                if let character = try? JSONDecoder().decode(T.self, from: data) {
+                    completion(.success(character))
+                } else {
+                    print("Invalid Response")
+                    completion(.failure(.decoderError))
                 }
+            }else{
+                completion(.failure(.noData))
+            }
         }
         
         task.resume()

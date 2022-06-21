@@ -12,9 +12,9 @@ class LoginViewModel {
 
     var didLoggedIn: ((_ loginModel: LoginModel)->Void)?
     
-    let service: LoginServiceDelegate
+    let service: LoginServiceDelegate?
     
-    init(_ service: LoginServiceDelegate) {
+    init(_ service: LoginServiceDelegate?) {
         self.service = service
     }
     
@@ -61,10 +61,19 @@ class LoginViewModel {
     }
     
     func login(){
-        service.login { [weak self] (result: LoginModel) in
         
-            self?.loginModel = result
-            self?.didLoggedIn?(result)
+        service?.login { [weak self] (result) in
+            
+            switch result {
+            case .success(let model):
+                self?.loginModel = model
+                self?.didLoggedIn?(model)
+                break
+            case .failure(let error):
+                print(error)
+                break
+            }
+            
         }
     }
     

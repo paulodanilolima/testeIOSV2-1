@@ -9,4 +9,10 @@ import UIKit
 
 class DashboardViewModel {
     
+    let service: DashboardServiceDelegate
+    
+    init(_ service: DashboardServiceDelegate) {
+        self.service = service
+    }
+    
 }
