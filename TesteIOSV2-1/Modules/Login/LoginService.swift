@@ -9,11 +9,11 @@ import UIKit
 
 typealias LoginCompletion = (_ result: Result<LoginModel,NetworkError>) -> Void
 
-protocol LoginServiceDelegate {
+protocol LoginServiceProtocol {
     func login(_ completion: @escaping LoginCompletion)
 }
 
-final class LoginService: BaseService, LoginServiceDelegate {
+final class LoginService: BaseService, LoginServiceProtocol {
     
     func login(_ completion: @escaping LoginCompletion) {
         

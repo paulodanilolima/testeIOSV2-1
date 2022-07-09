@@ -16,11 +16,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var lblLoginStats: UILabel!
     
-    let viewModel: LoginViewModel
+    var viewModel: LoginViewModelProtocol
     let coordinator: AppCoordinator
     
-    init(viewModel: LoginViewModel, coordinator: AppCoordinator) {
-        self.viewModel = viewModel
+    init(viewModel: LoginViewModelProtocol, coordinator: AppCoordinator) {
+        self.viewModel =  viewModel
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }

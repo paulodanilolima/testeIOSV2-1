@@ -10,12 +10,10 @@ import XCTest
 
 class TesteIOSV2_1Tests: XCTestCase {
     
-
     override func setUp() {
         
         super.setUp()
     }
-    
     
     override class func tearDown() {
         super.tearDown()

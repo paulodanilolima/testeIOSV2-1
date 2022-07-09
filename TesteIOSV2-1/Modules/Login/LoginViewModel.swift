@@ -8,13 +8,20 @@
 import Foundation
 import UIKit
 
-class LoginViewModel {
+protocol LoginViewModelProtocol {
+    func verifyLoginAndPassword(Password: String)-> Bool
+    func login()
+    func login(tfUserName: UITextField, tfPassword: UITextField, label: UILabel) -> Bool
+    var didLoggedIn: ((_ loginModel: LoginModel)->Void)? { get set }
+}
+
+class LoginViewModel: LoginViewModelProtocol {
 
     var didLoggedIn: ((_ loginModel: LoginModel)->Void)?
     
-    let service: LoginServiceDelegate?
+    let service: LoginServiceProtocol?
     
-    init(_ service: LoginServiceDelegate?) {
+    init(_ service: LoginServiceProtocol?) {
         self.service = service
     }
     

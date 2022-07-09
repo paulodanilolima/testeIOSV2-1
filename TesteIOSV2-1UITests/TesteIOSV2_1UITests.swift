@@ -57,6 +57,4 @@ class TesteIOSV2_1UITests: XCTestCase {
         let button = application.buttons["LoginButton"]
         button.tap()
     }
-    
-
 }
