@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='TesteIOSV2-1UITests.xctest' tests='8' failures='0'>
+  <testsuite name='TesteIOSV2_1Tests.loginViewModelUnitTests' tests='5' failures='0'>
+    <testcase classname='TesteIOSV2_1Tests.loginViewModelUnitTests' name='testLogin' time='0.012'/>
+    <testcase classname='TesteIOSV2_1Tests.loginViewModelUnitTests' name='testVerifyLoginAndPassword' time='0.004'/>
+    <testcase classname='TesteIOSV2_1Tests.loginViewModelUnitTests' name='testVerifyLoginAndPasswordFailNoUppercaseLetter' time='0.002'/>
+    <testcase classname='TesteIOSV2_1Tests.loginViewModelUnitTests' name='testVerifyLoginAndPasswordNoNumber' time='0.002'/>
+    <testcase classname='TesteIOSV2_1Tests.loginViewModelUnitTests' name='testVerifyLoginAndPasswordNoSpecialCaracter' time='0.002'/>
+  </testsuite>
+  <testsuite name='TesteIOSV2_1UITests.dashbioardUiTests' tests='1' failures='0'>
+    <testcase classname='TesteIOSV2_1UITests.dashbioardUiTests' name='testValidadeUI' time='7.966'/>
+  </testsuite>
+  <testsuite name='TesteIOSV2_1UITests.loginUiTests' tests='2' failures='0'>
+    <testcase classname='TesteIOSV2_1UITests.loginUiTests' name='testClickLogin' time='3.880'/>
+    <testcase classname='TesteIOSV2_1UITests.loginUiTests' name='testValidadeUI' time='7.072'/>
+  </testsuite>
+</testsuites>
